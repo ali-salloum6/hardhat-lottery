@@ -108,7 +108,7 @@ contract Lottery is VRFConsumerBaseV2, AutomationCompatibleInterface {
     }
 
     /**
-     * @dev Sets the state to processing and requests a random number using
+     * @dev Sets the state to calculating and requests a random number using
      * Chainlink VRF v2
      * 
      * first checks if upkeep is needed or the function was called incorrectly

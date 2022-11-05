@@ -53,6 +53,13 @@ const deployLottery: DeployFunction = async function (hre: HardhatRuntimeEnviron
     if (!developmentChains.includes(network.name)) {
         log("Verifying...");
         await verify(lottery.address, args);
+    } else {
+        const vrfCoordinatorV2Mock = await ethers.getContract(
+            "VRFCoordinatorV2Mock"
+          );
+          log("adding consumer...")
+          await vrfCoordinatorV2Mock.addConsumer(subscriptionId!, lottery.address)
+          log("Consumer added!")
     }
     log("-----------------------");
 };
